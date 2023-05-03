@@ -28,6 +28,9 @@ direction = "up"
 home_score = 0
 away_score = 0
 
+# Define the computer player
+computer_player = random.choice(["home", "away"])
+
 # Start the game
 while True:
 
@@ -40,7 +43,10 @@ while True:
     print(field)
 
     # Get the player's input
-    command = input("What would you like to do? (up, down, left, right, shoot)")
+    if player == "human":
+        command = input("What would you like to do? (up, down, left, right, shoot)")
+    else:
+        command = random.choice(["up", "down", "left", "right", "shoot"])
 
     # Check the player's input
     if command == "up":
@@ -106,3 +112,6 @@ while True:
     # Increment the time
     time += 1
 
+    # If the player is the computer, make a random move
+    if player == computer_player:
+        command = random.choice(["up", "down", "left", "right", "shoot"])
